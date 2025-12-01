@@ -16,3 +16,26 @@ def pregunta_11():
 
 
     """
+
+    sumaLetra = {}
+    with open("files/input/data.csv", "r") as archivo:
+        for renglon in archivo:
+            div = renglon.strip().split("\t")
+            valor = int(div[1])
+            letras = div[3].split(",")
+
+            for letra in letras:
+                if letra in sumaLetra:
+                    sumaLetra[letra] += valor
+                else:
+                    sumaLetra[letra] = valor
+    
+    #Se ordena el diccionario alfabéticamente
+    resultado11 = {}
+    for clave in sorted(sumaLetra.keys()):
+        resultado11[clave] = sumaLetra[clave]
+
+    return resultado11
+
+if __name__ == "__main__":
+    print(pregunta_11())

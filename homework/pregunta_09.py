@@ -24,3 +24,33 @@ def pregunta_09():
      'jjj': 18}}
 
     """
+
+    conteoClaves = {}
+
+    with open("files/input/data.csv","r") as archivo:
+        for renglon in archivo:
+            div = renglon.strip().split("\t")
+            clavesValores = div[4].split(",")
+            
+            #Para contar una vez por registro se usa set
+            claveSet = set()
+            for cv in clavesValores:
+                clave, _ = cv.split(":")
+                claveSet.add(clave)
+
+            #Se cuentan las apariciones de la clave
+            for clave in claveSet:
+                if clave in conteoClaves:
+                    conteoClaves[clave] += 1
+                else:
+                    conteoClaves[clave] = 1
+
+    #Se ordena el diccionario alfabéticamente
+    resultado9 = {}
+    for clave in sorted(conteoClaves.keys()):
+        resultado9[clave] = conteoClaves[clave]
+
+    return resultado9
+
+if __name__ == "__main__":
+    print(pregunta_09())

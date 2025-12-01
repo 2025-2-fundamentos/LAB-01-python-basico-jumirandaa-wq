@@ -15,3 +15,21 @@ def pregunta_03():
     [('A', 53), ('B', 36), ('C', 27), ('D', 31), ('E', 67)]
 
     """
+    sumas = {}
+
+    with open("files/input/data.csv","r") as archivo:
+        for renglon in archivo:
+            div = renglon.strip().split("\t")
+            letra = div[0]
+            valor = int(div[1])
+
+            if letra in sumas:
+                sumas[letra] += valor
+            else:
+                sumas[letra] = valor
+                
+    resultado3 = sorted(sumas.items())
+    return resultado3
+
+if __name__ == "__main__":
+    print(pregunta_03())

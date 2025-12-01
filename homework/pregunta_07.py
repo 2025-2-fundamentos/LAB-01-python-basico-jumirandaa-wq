@@ -25,3 +25,22 @@ def pregunta_07():
      (9, ['A', 'B', 'E', 'A', 'A', 'C'])]
 
     """
+
+    asociaciones = {}
+
+    with open("files/input/data.csv","r") as archivo:
+        for renglon in archivo:
+            div = renglon.strip().split("\t")
+            letra = div[0]
+            num = int(div[1])
+
+            if num in asociaciones:
+                asociaciones[num].append(letra)
+            else:
+                asociaciones[num] = [letra]
+
+    resultado7 = sorted(asociaciones.items())
+    return resultado7
+
+if __name__ == "__main__":
+    print(pregunta_07())

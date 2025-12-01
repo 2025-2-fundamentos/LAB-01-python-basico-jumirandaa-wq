@@ -20,3 +20,17 @@ def pregunta_10():
 
 
     """
+    resultado10 = []
+
+    with open("files/input/data.csv", "r") as archivo:
+        for renglon in archivo:
+            div = renglon.strip().split("\t")
+            letra = div[0]
+            columna4 = div[3].split(",")
+            columna5 = div[4].split(",")
+            resultado10.append((letra, len(columna4),len(columna5)))
+
+    return resultado10
+
+if __name__ == "__main__":
+    print(pregunta_10())
